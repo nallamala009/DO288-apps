@@ -9,6 +9,7 @@ io.openshift.tags="apache, httpd"
 
 RUN sed -i "s/Listen 80/Listen/g" /etc/httpd/conf/httpd.conf && \
 
-RUN chmod -R g=u /var/logs/httpd /var/run/httpd
+RUN chgrp -R 0 /var/log/httpd /var/run/httpd && \ 
+chmod -R g=u /var/logs/httpd /var/run/httpd
 
 USER 1001
